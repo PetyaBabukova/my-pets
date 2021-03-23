@@ -4,6 +4,7 @@ import { Component } from 'react';
 import * as petsService from "../../services/petsService";
 
 import Pet from "../Pet/Pet";
+
 import CategoryNavigation from './CategoryNavigation/CategoryNavigation'
 
 class Categories extends Component {
@@ -12,55 +13,51 @@ class Categories extends Component {
 
         this.state = {
             pets: [],
-            currentCategory: 'all'
+            currentCategory: 'all',
         }
     }
 
     componentDidMount() {
-
         petsService.getAll()
             .then(res => this.setState({ pets: res }))
     };
 
-    componentDidUpdate(prevProps, prevState) {
-
-        const category = this.props.match.params.category
+    componentDidUpdate(prevProps) {
+        const category = this.props.match.params.category;
 
         if (prevProps.match.params.category == category) {
             return;
         }
-        petsService.getAll(this.category)
-            .then(res =>
-                this.setState({ pets: res, currentCategory: this.category }))
-    }
+        petsService.getAll(category)
+            .then(res => {
+                this.setState({ pets: res, currentCategory: category })
+            })
+    };
 
     render() {
-
         // console.log(this.state.pets);
         return (
-            <section className="dashboard">
+            <div className="dashboard">
                 <h1>Dashboard</h1>
 
                 <CategoryNavigation />
-
 
                 <ul className="other-pets-list">
                     {this.state.pets.map(x => //по принцип може да се подаде целия обект {...x}, това е по адванст техника.
                         <Pet
                             key={x.id}
-                            id={x.id}
-                            name={x.name}
-                            category={x.category}
-                            likes={x.likes}
-                            description={x.description}
-                            imageURL={x.imageURL}
-                        // {...x} //това може да замени горните записи, без ключа!!!
-
+                            // id={x.id}
+                            // name={x.name}
+                            // category={x.category}
+                            // likes={x.likes}
+                            // description={x.description}
+                            // imageURL={x.imageURL}
+                        {...x} //това може да замени горните записи, без ключа!!!
                         />
                     )}
                 </ul>
-            </section>
-        )
+            </div>
+        );
     }
 }
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Pet = ({
     id,
     name,
@@ -13,8 +15,8 @@ const Pet = ({
         <p className="img"><img src={imageURL} /></p>
         <p className="description">{description}</p>
         <div className="pet-info">
-            <a href="#"><button className="button"><i className="fas fa-heart"></i> Pet</button></a>
-            <a href="#"><button className="button">Details</button></a>
+            <Link to="#"><button className="button"><i className="fas fa-heart"></i> Pet</button></Link>
+            <Link to={`/pets/details/${id}`}><button className="button">Details</button></Link>
             <i className="fas fa-heart"></i> <span> {likes}</span>
         </div>
     </li>

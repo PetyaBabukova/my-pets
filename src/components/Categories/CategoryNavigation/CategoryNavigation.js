@@ -5,24 +5,22 @@ const CategoryNavigation = () => {
         <nav className="navbar">
             <ul>
                 <li><NavLink activeClassName="nav-link-selected" to="/categories/all">All</NavLink></li>
-                <li><NavLink activeClassName="nav-link-selected" to="/categories/cats">Cats</NavLink></li>
-                <li><NavLink activeClassName="nav-link-selected" to="/categories/dogs">Dogs</NavLink></li>
-                <li><NavLink activeClassName="nav-link-selected" to="/categories/parrots">Parrots</NavLink></li>
-                <li><NavLink activeClassName="nav-link-selected" to="/categories/reptiles">Reptiles</NavLink></li>
-                <li><NavLink activeClassName="nav-link-selected" to="/categories/other">Other</NavLink></li>
+                <li><NavLink activeClassName="nav-link-selected" to="/categories/Cat">Cats</NavLink></li>
+                <li><NavLink activeClassName="nav-link-selected" to="/categories/Dog">Dogs</NavLink></li>
+                <li><NavLink activeClassName="nav-link-selected" to="/categories/Parrot">Parrots</NavLink></li>
+                <li><NavLink activeClassName="nav-link-selected" to="/categories/Reptile">Reptiles</NavLink></li>
+                <li><NavLink activeClassName="nav-link-selected" to="/categories/Other">Other</NavLink></li>
             </ul>
 
             {/* NavLink auto makes activClassName="actve". We can use it :) */}
 
-            <style jsx>
-                {`
+            <style jsx>{`
                 .nav-link-selected{
                     background-color: lightGreen !important; //this is not good to do ('!important)
                 }
-                `}
-            </style>
+                `}</style>
         </nav>
-    )
-}
+    );
+};
 
 export default CategoryNavigation;
