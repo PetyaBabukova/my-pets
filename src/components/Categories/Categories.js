@@ -3,7 +3,7 @@ import { Component } from 'react';
 
 import * as petsService from "../../services/petsService";
 
-import Pet from "../Pet/Pet";
+import PetCard from "../PetCard/PetCard";
 
 import CategoryNavigation from './CategoryNavigation/CategoryNavigation'
 
@@ -44,7 +44,7 @@ class Categories extends Component {
 
                 <ul className="other-pets-list">
                     {this.state.pets.map(x => //по принцип може да се подаде целия обект {...x}, това е по адванст техника.
-                        <Pet
+                        <PetCard
                             key={x.id}
                             // id={x.id}
                             // name={x.name}
