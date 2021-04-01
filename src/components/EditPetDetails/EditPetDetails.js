@@ -19,6 +19,15 @@ const EditPetDetails = ({
         console.log(e.target);
         // console.log(e.target.description.value);
 
+        let petId = match.params.petId
+        let updatedPet = { ...pet, description: e.target.description.value }
+
+        petsService.update(petId, updatedPet)
+            .then(() => {
+                history.push(`/pets/details/${petId}`)
+                return;
+            })
+
     };
     // console.log(pet);
 
