@@ -8,6 +8,8 @@ import EditPetDetails from './components/EditPetDetails/EditPetDetails';
 import CreatePet from './components/CreatePet/CreatePet';
 import EditPet from './components/EditPet/EditPet';
 import DemoPage from './components/Demo';
+import DemoFunc from './components/DemoFunc';
+import DemoFuncHooks from './components/DemoFunkHooks';
 
 import './App.css';
 
@@ -24,6 +26,9 @@ function App() {
     <Route path="/pets/create" component={CreatePet} />
     <Route path="/pets/:petId/edit" component={EditPet} /> {/* тук искаме да преизползваме формата за криейт, но да можем и да едитваме */}
     <Route path="/demo" component={DemoPage} />
+    <Route path="/demo-func" component={DemoFunc} />
+    <Route path="/demo-func-hooks" component={DemoFuncHooks} />
+    
     {/* <Route path="/demo" render={(props) => <DemoFunkPage {...props} oshte="props" />} /> */}
       </Switch>
 
