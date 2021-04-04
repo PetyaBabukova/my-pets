@@ -1,5 +1,6 @@
 // import React from 'react'; //this is nessessery for old versions becose of jsx
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const DemoFuncHooks = () => {
 
@@ -11,16 +12,21 @@ const DemoFuncHooks = () => {
 
     const [count, setCount] = useState(1);
     const [step, setStep] = useState(1);
-    const [character, setCharacter] = useState({name: 'Nobody'})
-    
+    const [character, setCharacter] = useState({ name: 'Nobody' })
+
     // const [, toggleRefresh] = useState(true) //don`t
     // let counter = 666; //don`t
 
-    useEffect(()=>{
-        fetch(`https://swapi.dev/api/people/1`)
-        .then(res => res.json())
-        .then(result => setCharacter(result))
-    }, []);
+    useEffect(() => {
+        console.log('use efect');
+        fetch(`https://swapi.dev/api/people/${step}`)
+            .then(res => res.json())
+            .then(result => setCharacter(result))
+
+        return () => {
+            console.log('Component will unmount');
+        }
+    }, [step]);
 
     const onCounterButtonClickHandler = () => {
         // setCount(count + 1) //don`t do this! count is read only becose of "const". Ако има повече кликове няма да върне октуалното състояние.
@@ -59,6 +65,9 @@ const DemoFuncHooks = () => {
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
+            <div>
+                <Link to="/">Home</Link>
+            </div>
         </div>
     )
 };
